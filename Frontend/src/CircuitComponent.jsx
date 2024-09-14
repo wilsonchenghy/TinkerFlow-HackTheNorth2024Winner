@@ -1,6 +1,6 @@
 import React from 'react';
 import { ReactFlow } from '@xyflow/react';
-import './CircuitComponent.css';
+import './css/CircuitComponent.css';
 import '@xyflow/react/dist/style.css';
 
 // Function to create initial nodes for each component block

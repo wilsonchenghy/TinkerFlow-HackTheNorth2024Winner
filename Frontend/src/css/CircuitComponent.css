@@ -7,7 +7,7 @@
     padding: 10px;
     background: linear-gradient(45deg, #4793d2, rgb(61, 139, 199)) !important; 
     color: black !important;
-    border: 2px solid #bf0e0e;
+    border: 2px solid black;
     border-radius: 20px !important;
     display: flex;
     align-items: center;

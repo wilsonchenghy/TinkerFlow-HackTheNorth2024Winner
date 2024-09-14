@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import axios from 'axios'
-import './App.css'
+import './css/App.css'
 import CircuitComponent from './CircuitComponent.jsx';
 import InputContextPage from './InputContextPage.jsx';
 import InstructionPage from './InstructionPage.jsx';
