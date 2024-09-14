@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import axios from 'axios'
 import './App.css'
+import CircuitComponent from './CircuitComponent.jsx';
 
 function App() {
   const [prompt, setPrompt] = useState('')
@@ -29,6 +30,7 @@ function App() {
         <button type="submit" className="mainPageSubmit-button">Submit</button>
       </form>
     </div>
+      // <CircuitComponent data={['5V', 'GND', 'D5', 'D6']} />
   )
 }
 

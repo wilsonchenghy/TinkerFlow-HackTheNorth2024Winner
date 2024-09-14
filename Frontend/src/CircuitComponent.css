@@ -1,0 +1,12 @@
+.custom-node {
+    width: 190px !important;
+    height: 200px;
+    padding: 10px;
+    background-color: #4793d2 !important; 
+    color: black !important;
+    border: 2px solid #bf0e0e;
+    border-radius: 20px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
