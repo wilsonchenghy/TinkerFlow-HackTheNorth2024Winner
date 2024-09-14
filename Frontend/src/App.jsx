@@ -30,6 +30,7 @@ function App() {
         <button type="submit" className="mainPageSubmit-button">Submit</button>
       </form>
     </div>
+    // <CircuitComponent data={[['5V', 'GND', 'D5', 'D6', 'D7'], ['5V', 'GND', 'D1', 'D2'], ['D1', 'D2']]} />
   )
 }
 
