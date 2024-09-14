@@ -8,8 +8,9 @@ const initialNodes = (data, blockIndex, offsetX) => [
   { id: `comp-${blockIndex}-1`, position: { x: offsetX, y: 100 }, data: { label: `Component ${blockIndex + 1}` }, className: 'custom-node', style: { height: `${(data.length * 100) / 2}px` } },
   ...data.map((item, index) => ({
     id: `comp-${blockIndex}-${item}`, // Unique ID for each item in the block
-    position: { x: offsetX + 200, y: 100 + index * 50 },
+    position: { x: offsetX + 195, y: 100 + index * 50 },
     data: { label: item },
+    className: 'custom-pinout-node',
   }))
 ];
 
@@ -51,7 +52,7 @@ export default function CircuitBoard({ data }) {
 
   // Loop over each data block and generate nodes and edges
   dataBlocks.forEach((blockData, index) => {
-    const offsetX = index * 400; // Separate each component block visually by 400px
+    const offsetX = index * 350; // Separate each component block visually by 400px
     nodes.push(...initialNodes(blockData, index, offsetX));
     edges.push(...initialEdges(blockData, index));
   });
@@ -62,7 +63,7 @@ export default function CircuitBoard({ data }) {
   const proOptions = { hideAttribution: true };
 
   return (
-    <div style={{ width: '90%', height: '50vh', border: '1px solid #ccc' }}>
+    <div style={{ width: '100%', height: '50vh', border: '1px solid #ccc' }}>
       <ReactFlow
         nodes={nodes}
         edges={[...edges, ...matchingEdges]} 

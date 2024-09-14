@@ -1,11 +1,37 @@
+.react-flow {
+    --xy-edge-stroke-width-default: 3px !important;
+  }
+
 .custom-node {
     width: 190px !important;
     padding: 10px;
-    background-color: #4793d2 !important; 
+    background: linear-gradient(45deg, #4793d2, rgb(61, 139, 199)) !important; 
     color: black !important;
     border: 2px solid #bf0e0e;
     border-radius: 20px !important;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.custom-pinout-node {
+    width: 100px !important;
+    height: 35px;
+    border-top-right-radius: 20px !important;
+    border-bottom-right-radius: 20px !important;
+    background: linear-gradient(45deg, #FFD700, #FFA500, #FFD700) !important;
+    background-size: 200% 200% !important;
+    animation: shine 4s infinite linear;
+}
+
+@keyframes shine {
+    0% {
+        background-position: 0% 50% !important;
+    }
+    50% {
+        background-position: 100% 50% !important;
+    }
+    100% {
+        background-position: 0% 50% !important;
+    }
 }
