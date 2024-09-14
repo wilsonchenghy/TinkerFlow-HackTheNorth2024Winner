@@ -2,11 +2,15 @@ import React, { useState } from "react";
 import './css/InputContextPage.css';
 import axios from 'axios';
 import { AddCircle28Regular } from '@fluentui/react-icons';
+import { handleImageUpload } from "./util/image_handling";
 import CanvasAnimation from "./ContextCircularPulse";
 
 const InputContextPage = () => {
     const [input, setInput] = useState('');
     const [response, setResponse] = useState('');
+
+    const [file, setFile] = useState(); 
+    const [photo, setPhoto] = useState(); 
 
     const handleInputChange = (e) => {
         setInput(e.target.value);
@@ -32,7 +36,7 @@ const InputContextPage = () => {
                 <CanvasAnimation />
             </div>
             <div className="input-bar">
-                <button className="import-button">
+                <button className="import-button" onClick={() => handleImageUpload(setFile, setPhoto)}>
                     <AddCircle28Regular/>
                 </button>
                 <form onSubmit={handleSubmit}>
