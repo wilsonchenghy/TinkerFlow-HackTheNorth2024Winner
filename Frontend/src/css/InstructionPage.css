@@ -1,0 +1,17 @@
+.instruction-page-container {
+    width: 62vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.notes-topic {
+    display: flex;
+    justify-content: center;
+}
+
+.schematic-container {
+    height: 20%;
+    width: 80%;
+}

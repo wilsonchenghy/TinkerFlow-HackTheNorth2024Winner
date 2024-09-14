@@ -35,7 +35,6 @@ const connectMatchingNodes = (dataBlocks) => {
           id: `match-${item}-${i}-${j}`,
           source: `comp-${i}-${item}`,
           target: `comp-${j}-${item}`,
-          animated: true,
         });
       });
     }
@@ -60,11 +59,15 @@ export default function CircuitBoard({ data }) {
   // Add edges connecting matching nodes between different component blocks
   const matchingEdges = connectMatchingNodes(dataBlocks);
 
+  const proOptions = { hideAttribution: true };
+
   return (
-    <div style={{ width: '100vw', height: '100vh' }}>
+    <div style={{ width: '90%', height: '50vh', border: '1px solid #ccc' }}>
       <ReactFlow
         nodes={nodes}
-        edges={[...edges, ...matchingEdges]} // Include both initial edges and matching edges
+        edges={[...edges, ...matchingEdges]} 
+        proOptions={proOptions}
+        fitView
       />
     </div>
   );

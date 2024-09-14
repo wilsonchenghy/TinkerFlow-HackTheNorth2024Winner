@@ -2,6 +2,8 @@ import { useState } from 'react'
 import axios from 'axios'
 import './App.css'
 import CircuitComponent from './CircuitComponent.jsx';
+import InputContextPage from './InputContextPage.jsx';
+import InstructionPage from './InstructionPage.jsx';
 
 function App() {
   const [prompt, setPrompt] = useState('')
@@ -18,19 +20,22 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <form className="mainPageSubFormContainer" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          className="mainPageInput"
-          value={prompt}
-          onChange={(e) => setPrompt(e.target.value)}
-          placeholder="Topic"
-        />
-        <button type="submit" className="mainPageSubmit-button">Submit</button>
-      </form>
+    // <div className="App">
+    //   <form className="mainPageSubFormContainer" onSubmit={handleSubmit}>
+    //     <input
+    //       type="text"
+    //       className="mainPageInput"
+    //       value={prompt}
+    //       onChange={(e) => setPrompt(e.target.value)}
+    //       placeholder="Topic"
+    //     />
+    //     <button type="submit" className="mainPageSubmit-button">Submit</button>
+    //   </form>
+    // </div>
+    <div className='AppContainer'>
+      <InputContextPage />
+      <InstructionPage />
     </div>
-    // <CircuitComponent data={[['5V', 'GND', 'D5', 'D6', 'D7'], ['5V', 'GND', 'D1', 'D2'], ['D1', 'D2']]} />
   )
 }
 
