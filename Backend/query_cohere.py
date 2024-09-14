@@ -22,19 +22,21 @@ def get_project_info(objects_using, api_key = "A3AdtI1axIksKhMN6IG2PpyOharzuF4RV
     
 
     message_format = '''
-    Return the name, description, numbered steps instruction, connection, and components in the following JSON format:
+    Return the name, description, numbered steps instruction, connection, code, and components in the following JSON format:
     {
         "name": "xxx",
         "description": "xxx",
         "instruction": "xxx",
-        "connections": "xxx"
-        "components": "xxx"
+        "connections": "xxx",
+        "components": "xxx",
+        "code": "xxx"
+
     }
-    The components value will be an array of all the components used for the build.
-    Each wire connection format will be: connection name 1/connection name 2
+    The components value will be an array of all the components used for the build. Multilpe of the same component would each take an index.
+    Each wire connection format will be: connection name 1/connection name 2. The connection name 1 and connection name 2 must be in the simplest term.
     For the wire connection format the name of the component will not be mentioned. The name will be simple and accurate form.
-    connections value will be formated as a 2D array with each subarray will be corresponding with the components with the same index.
-    The subarray will be an array of all the wire connection with the assigned components, including ones mentioned previously.
+    connections value will be formated as a 2D array with each inside array will be corresponding with the components with the same index.
+    The inside array will be an array of all the wire connection with the assigned components, including ones mentioned previously.
 '''
 
     chat = ChatCohere( cohere_api_key= api_key,
@@ -58,7 +60,61 @@ def get_project_info(objects_using, api_key = "A3AdtI1axIksKhMN6IG2PpyOharzuF4RV
                                 "components": [
                                     "Arduino Nano",
                                     "BMP180"
-                                ]
+                                ], 
+                                "code": "   #include <SFE_BMP180.h>
+                                            #include <Wire.h>
+
+                                            #define ALTITUDE 1655.0 // Altitude in meters
+
+                                            SFE_BMP180 pressure;
+
+                                            void setup() {
+                                            Serial.begin(9600);
+                                            Serial.println("REBOOT");
+
+                                            if (pressure.begin()) {
+                                            Serial.println("BMP180 init success");
+                                            } else {
+                                            Serial.println("BMP180 init fail");
+                                            while (1);
+                                            }
+                                            }
+
+                                            void loop() {
+                                            char status;
+                                            double T, P, p0, a;
+
+                                            status = pressure.startPressure(3);
+                                            if (status != 0) {
+                                            delay(status);
+                                            status = pressure.getPressure(P, T);
+                                            if (status != 0) {
+                                            Serial.print("Absolute pressure: ");
+                                            Serial.print(P, 2);
+                                            Serial.print(" mb, ");
+                                            Serial.print(P * 0.0295333727, 2);
+                                            Serial.println(" inHg");
+                                            } else {
+                                            Serial.println("Error retrieving pressure measurement");
+                                            }
+                                            } else {
+                                            Serial.println("Error starting pressure measurement");
+                                            }
+
+                                            a = pressure.altitude(P, p0);
+                                            if (a != 0) {
+                                            Serial.print("Computed altitude: ");
+                                            Serial.print(a, 0);
+                                            Serial.print(" meters, ");
+                                            Serial.print(a * 3.28084, 0);
+                                            Serial.println(" feet");
+                                            } else {
+                                            Serial.println("Error retrieving altitude");
+                                            }
+
+                                            delay(5000);
+                                            }
+                                            "
                             }
 """}
                          ],
@@ -94,4 +150,7 @@ response = get_project_info(objects_using)
 print(response['instruction'])
 
 print(response['connections'])
-print(response['components'], '---')
+print(response['components'], '\n\n\n\n')
+
+
+print(response['code'])
