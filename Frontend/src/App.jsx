@@ -18,19 +18,19 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <form className="mainPageSubFormContainer" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          className="mainPageInput"
-          value={prompt}
-          onChange={(e) => setPrompt(e.target.value)}
-          placeholder="Topic"
-        />
-        <button type="submit" className="mainPageSubmit-button">Submit</button>
-      </form>
-    </div>
-      // <CircuitComponent data={['5V', 'GND', 'D5', 'D6']} />
+    // <div className="App">
+    //   <form className="mainPageSubFormContainer" onSubmit={handleSubmit}>
+    //     <input
+    //       type="text"
+    //       className="mainPageInput"
+    //       value={prompt}
+    //       onChange={(e) => setPrompt(e.target.value)}
+    //       placeholder="Topic"
+    //     />
+    //     <button type="submit" className="mainPageSubmit-button">Submit</button>
+    //   </form>
+    // </div>
+    <CircuitComponent data={['5V', 'GND', 'D5', 'D6', 'D7']} />
   )
 }
 
