@@ -6,14 +6,15 @@ function App() {
   const [prompt, setPrompt] = useState('')
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
-      await axios.post('http://localhost:5001/submit', { prompt })
-      console.log('Data sent successfully')
+      const response = await axios.post('http://localhost:5001/submit', { prompt });
+      console.log('Data sent successfully');
+      console.log('Response data:', response.data);
     } catch (error) {
-      console.error('Error sending data:', error)
+      console.error('Error sending data:', error);
     }
-  }
+  };
 
   return (
     <div className="App">

@@ -9,7 +9,7 @@ def submit():
     data = request.get_json()
     prompt = data.get('prompt', '')
     print(f'Received prompt: {prompt}')
-    return jsonify({'status': 'success'}), 200
+    return jsonify({'message': [prompt]}), 200 
 
 if __name__ == '__main__':
     app.run(port=5001, debug=True)
