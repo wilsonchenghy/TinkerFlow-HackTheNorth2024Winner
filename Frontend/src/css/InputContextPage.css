@@ -16,7 +16,15 @@
     text-align: center;
 }
 
-.form {
+.import-button {
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    position: relative;
+    color: black !important;
+}
+
+.input-bar {
     display: flex;
     justify-content: center;
     align-items: center;

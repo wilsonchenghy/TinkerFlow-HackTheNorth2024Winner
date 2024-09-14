@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import './css/InputContextPage.css';
 import axios from 'axios';
+import { AddCircle28Regular } from '@fluentui/react-icons';
 
 const InputContextPage = () => {
     const [input, setInput] = useState('');
@@ -26,17 +27,22 @@ const InputContextPage = () => {
     return (
         <div className="input-context-page-container">
             <div className="input-context-topic">Enter the components you got! </div>
-            <form onSubmit={handleSubmit} className="form">
-                <input
-                    type="text"
-                    value={input}
-                    onChange={handleInputChange}
-                    placeholder="Type your message"
-                    className="input"
-                />
-                <button type="submit" className="button">Send</button>
-            </form>
-            {response && <div className="response">{response}</div>}
+            <div className="input-bar">
+                <button className="import-button">
+                    <AddCircle28Regular/>
+                </button>
+                <form onSubmit={handleSubmit}>
+                    <input
+                        type="text"
+                        value={input}
+                        onChange={handleInputChange}
+                        placeholder="Type your message"
+                        className="input"
+                    />
+                    <button type="submit" className="button">Send</button>
+                </form>
+                {response && <div className="response">{response}</div>}
+            </div>
         </div>
     );
 };
