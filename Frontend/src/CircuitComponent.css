@@ -1,18 +1,11 @@
-.custom-component-node {
+.custom-node {
     width: 190px !important;
     padding: 10px;
-    background-color: #3d93d9 !important; 
+    background-color: #4793d2 !important; 
     color: black !important;
     border: 2px solid #bf0e0e;
     border-radius: 20px !important;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.custom-pinout-node {
-  height: 35px;
-  border-radius: 20px !important;
-  background-color: #cf3d55 !important;
-  width: 100px !important;
-}
+  }
