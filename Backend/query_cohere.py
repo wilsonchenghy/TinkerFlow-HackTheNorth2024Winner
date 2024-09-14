@@ -44,29 +44,7 @@ def get_project_info(objects_using, api_key = "A3AdtI1axIksKhMN6IG2PpyOharzuF4RV
     resp1 = json.loads(response1.content)
 
 
-    query2 = '''
-    With only the following materials: ''' + ', '.join(objects_using) + '''.
-    Check the following JSON for any errors (wirring, instructions, etc...): ''' + str(resp1) + '''
-    Check all connections name and position are labeled correctly in short form.
-    Check all connection format are in "device (connector name) - device (connector name)" and in order of the instruction.
-    Check the JSON is in the format:
-    {
-        "name": "xxx",
-        "description": "xxx",
-        "instruction": "xxx",
-        "connections": "xxx"
-    }
-    Return the corrected version.
-    '''
-    message2 = [HumanMessage(content=query2)]
-
-
-    response2 = chat.invoke(message2)
-
-    print(response2)
-    resp2 = json.loads(response2.content)
-
-    return resp2
+    return resp1
     # print(resp["name"])
     # print(resp["instruction"])
 
