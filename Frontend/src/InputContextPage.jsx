@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import './css/InputContextPage.css';
 import axios from 'axios';
 import { AddCircle28Regular } from '@fluentui/react-icons';
+import CanvasAnimation from "./ContextCircularPulse";
 
 const InputContextPage = () => {
     const [input, setInput] = useState('');
@@ -27,6 +28,9 @@ const InputContextPage = () => {
     return (
         <div className="input-context-page-container">
             <div className="input-context-topic">Enter the components you got! </div>
+            <div className="canvas-animation-container">
+                <CanvasAnimation />
+            </div>
             <div className="input-bar">
                 <button className="import-button">
                     <AddCircle28Regular/>

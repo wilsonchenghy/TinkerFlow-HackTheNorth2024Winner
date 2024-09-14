@@ -16,6 +16,10 @@
     text-align: center;
 }
 
+.canvas-animation-container {
+
+}
+
 .import-button {
     border: none;
     cursor: pointer;
