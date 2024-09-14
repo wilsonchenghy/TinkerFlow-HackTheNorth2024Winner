@@ -3,17 +3,16 @@ import { ReactFlow } from '@xyflow/react';
 import './CircuitComponent.css';
 import '@xyflow/react/dist/style.css';
 
-// Function to create initial nodes for each component block
 const initialNodes = (data, blockIndex, offsetX) => [
-  { id: `comp-${blockIndex}-1`, position: { x: offsetX, y: 100 }, data: { label: `Component ${blockIndex + 1}` }, className: 'custom-node', style: { height: `${(data.length * 100) / 2}px` } },
+  { id: `comp-${blockIndex}-1`, position: { x: offsetX, y: 100 }, data: { label: `Component ${blockIndex + 1}` }, className: 'custom-component-node', style: { height: `${(data.length * 100) / 2 - 10}px` } },
   ...data.map((item, index) => ({
-    id: `comp-${blockIndex}-${item}`, // Unique ID for each item in the block
+    id: `comp-${blockIndex}-${item}`,
     position: { x: offsetX + 200, y: 100 + index * 50 },
     data: { label: item },
+    className: 'custom-pinout-node',
   }))
 ];
 
-// Function to create edges for each component block
 const initialEdges = (data, blockIndex) => [
   ...data.map((item) => ({
     id: `e-comp-${blockIndex}-${item}`,
