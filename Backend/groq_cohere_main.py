@@ -129,12 +129,12 @@ def get_project_info(objects_using, api_key = "A3AdtI1axIksKhMN6IG2PpyOharzuF4RV
 # objects_using = ["Arduino Nano", "L298N Motor Driver", "DC Motor", "DC Motor", "9V Battery"]
 
 
-response = get_project_info(objects_using)
+# response = get_project_info(objects_using)
 
-print(response['instruction'])
+# print(response['instruction'])
 
-print(response['connections'])
-print(response['components'], '\n\n\n\n')
+# print(response['connections'])
+# print(response['components'], '\n\n\n\n')
 
 
-print(response['code'])
+# print(response['code'])
