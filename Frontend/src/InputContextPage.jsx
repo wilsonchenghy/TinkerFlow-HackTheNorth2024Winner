@@ -35,7 +35,7 @@ const InputContextPage = () => {
     const [contextBoxContent, changeContextBoxContent] = useState(['Arduino', 'L298N', 'hi'])
 
     return (
-        <div className="input-context-page-container" style={{ backgroundImage: 'url(book.jpg)', backgroundSize: 'cover', backgroundColor: '#f2e0b6' }}>
+        <div className="input-context-page-container">
             <div className="input-context-topic">Enter the components you got! </div>
             <div className="canvas-animation-container">
                 <CanvasAnimation />
