@@ -32,6 +32,7 @@ def get_project_info(objects_using, api_key = "A3AdtI1axIksKhMN6IG2PpyOharzuF4RV
         "code": "xxx"
 
     }
+    The instructions will be an array data type, with each index being a step.
     The components value will be an array of all the components used for the build. Multilpe of the same component would each take an index.
     Connections will be an array data type not numbered showing the connections, in order of the instruction, in the format of "component:(connector name)/component:(connector name)", with each wire connection seperate.
     The wire position, connector name, and name of object will be specific and in short form (use symbols when applicable, ex positive to +) (Use short form for connector name when applicable, ex Digital Pin 5 to D5) (Use common labeling convention).
@@ -63,7 +64,7 @@ def get_project_info(objects_using, api_key = "A3AdtI1axIksKhMN6IG2PpyOharzuF4RV
 
     # process the connections
     all_components = []
-    all_connections = len(resp1["components"])*[[]]
+    all_connections = []
     for connection in resp1["connections"]:
         connection_point1, connection_point2 = connection.split("/")
 
@@ -72,10 +73,12 @@ def get_project_info(objects_using, api_key = "A3AdtI1axIksKhMN6IG2PpyOharzuF4RV
 
         if name1 not in all_components:
             all_components.append(name1)
+            all_connections.append([])
 
 
         if name2 not in all_components:
             all_components.append(name2)
+            all_connections.append([])
 
 
         combo_name = connector_name1 + "/" + connector_name2
