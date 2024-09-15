@@ -20,18 +20,6 @@ function App() {
   };
 
   return (
-    // <div className="App">
-    //   <form className="mainPageSubFormContainer" onSubmit={handleSubmit}>
-    //     <input
-    //       type="text"
-    //       className="mainPageInput"
-    //       value={prompt}
-    //       onChange={(e) => setPrompt(e.target.value)}
-    //       placeholder="Topic"
-    //     />
-    //     <button type="submit" className="mainPageSubmit-button">Submit</button>
-    //   </form>
-    // </div>
     <div className='AppContainer'>
       <InputContextPage />
       <InstructionPage />
