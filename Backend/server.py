@@ -137,7 +137,7 @@ def get_project_info(objects_using, api_key = "A3AdtI1axIksKhMN6IG2PpyOharzuF4RV
 @app.route('/submit', methods=['POST'])
 def submit():
     data = request.get_json()
-    prompt = data.get('prompt', '')
+    contextBoxInput = data.get('contextBoxContent', '')
 
 
 
@@ -147,7 +147,7 @@ def submit():
 
     # print(response['instruction'])
 
-    print(response['connections'])
+    # print(response['connections'])
     # print(response['components'], '\n\n\n\n')
 
 
@@ -156,7 +156,7 @@ def submit():
 
 
 
-    print(f'Received prompt: {prompt}')
+    print(f'Received prompt: {contextBoxInput}')
     return jsonify({'message': [response]}), 200 
 
 @app.route('/test', methods=["POST", "GET"])

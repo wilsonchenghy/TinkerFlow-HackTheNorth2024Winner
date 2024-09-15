@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import './css/InputContextPage.css';
 import axios from 'axios';
 import { AddCircle28Regular } from '@fluentui/react-icons';
 import { handleImageUpload } from "./util/image_handling";
 import CanvasAnimation from "./ContextCircularPulse";
 import { useDispatch } from 'react-redux';
-import { changeInstructionContentAction, changeInstructionTitleAction, changeSchemeticAction, changeComponentNamesAction } from './redux/actions.js';
+import { changeInstructionContentAction, changeInstructionTitleAction, changeSchemeticAction, changeComponentNamesAction, changeIsLoadingAction } from './redux/actions.js';
 
 const InputContextPage = () => {
     const dispatch = useDispatch();
@@ -13,25 +13,41 @@ const InputContextPage = () => {
     const [prompt, setPrompt] = useState('');
 
     const handlePromptChange = (e) => {
+        e.preventDefault();
         setPrompt(e.target.value);
     };
 
-    const handleSubmit = async (e) => {
+    const addContextBoxContent = (e) => {
         e.preventDefault();
+        setContextBoxContent(prevContent => {
+            const updatedContent = [...prevContent, prompt];
+            handleSubmit(updatedContent);
+            return updatedContent;
+        });
+        setPrompt('');
+    }
+
+    const handleSubmit = async (updatedContent) => {
+        dispatch(changeIsLoadingAction(true));
         try {
-            const response = await axios.post('http://localhost:5001/submit', { prompt });
+            const response = await axios.post('http://localhost:5001/submit', { contextBoxContent: updatedContent });
             console.log('Data sent successfully');
             console.log('Response data:', response.data);
             dispatch(changeInstructionContentAction(response.data.message[0].instruction));
             dispatch(changeInstructionTitleAction(response.data.message[0].name));
             dispatch(changeSchemeticAction(response.data.message[0].connections));
             dispatch(changeComponentNamesAction(response.data.message[0].components));
+            dispatch(changeIsLoadingAction(false));
         } catch (error) {
             console.error('Error fetching data:', error);
         }
     };
 
-    const [contextBoxContent, changeContextBoxContent] = useState(['Arduino', 'L298N', 'hi'])
+    const [contextBoxContent, setContextBoxContent] = useState(['Arduino', 'L298N', 'hi'])
+
+    // useEffect(() => {
+    //     handleSubmit();
+    // }, [contextBoxContent]);
 
     return (
         <div className="input-context-page-container">
@@ -75,7 +91,7 @@ const InputContextPage = () => {
                 <button className="import-button" onClick={() => handleImageUpload()}>
                     <AddCircle28Regular/>
                 </button>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={addContextBoxContent}>
                     <input
                         type="text"
                         value={prompt}

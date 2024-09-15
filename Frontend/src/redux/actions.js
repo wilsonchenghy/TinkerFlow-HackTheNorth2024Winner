@@ -17,3 +17,8 @@ export const changeComponentNamesAction = (componentNames) => ({
     type: 'CHANGE_COMPONENT_NAMES',
     payload: componentNames,
 });
+
+export const changeIsLoadingAction = (isLoading) => ({
+    type: 'CHANGE_IS_LOADING',
+    payload: isLoading,
+});

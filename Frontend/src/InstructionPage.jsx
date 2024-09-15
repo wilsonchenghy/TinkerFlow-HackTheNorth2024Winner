@@ -24,21 +24,38 @@ const InstructionPage = () => {
     // const componentNames = ['C1', 'C2', 'C3'];
     const componentNames = useSelector(state => state.componentNames);
 
+    const isLoading = useSelector(state => state.isLoading);
+
+    const LoadingSpinner = () => (
+        <div className='loading-spinner'>
+            <div className='spinner'></div>
+            <p>Loading...</p>
+        </div>
+    );
+
     return (
         <div className='instruction-page-container' style={{ backgroundImage: 'url(notebookbg.png)', backgroundSize: 'cover' }}>
-            <div className='instruction-topic-container'>
-                <div className='instruction-topic' style={{ fontFamily: 'Patrick Hand, cursive' }}>{instructionTitle}</div>
-            </div>
-            <div className='schematic-container' style={{ backgroundColor: 'white' }}>
-                <CircuitBoard data={circuitData} componentNames={componentNames}/>
-            </div>
-            <div className='instruction-content-container'>
-                <div>
-                    {instructionContent.map((step, index) => (
-                        <div key={index} style={{ marginBottom: '20px', fontFamily: 'Patrick Hand', fontWeight: 'bold', fontSize: '18px' }}>{step}</div>
-                    ))}
-                </div>
-            </div>
+            {isLoading ? (
+                <LoadingSpinner />
+            ) : (
+                <>
+                    <div className='instruction-topic-container'>
+                        <div className='instruction-topic' style={{ fontFamily: 'Patrick Hand, cursive' }}>{instructionTitle}</div>
+                    </div>
+                    <div className='schematic-container' style={{ backgroundColor: 'white' }}>
+                        <CircuitBoard data={circuitData} componentNames={componentNames} />
+                    </div>
+                    <div className='instruction-content-container'>
+                        <div>
+                            {instructionContent.map((step, index) => (
+                                <div key={index} style={{ marginBottom: '20px', fontFamily: 'Patrick Hand', fontWeight: 'bold', fontSize: '18px' }}>
+                                    {step}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </>
+            )}
         </div>
     );
 };
