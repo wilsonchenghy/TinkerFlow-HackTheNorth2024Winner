@@ -18,7 +18,8 @@ const InstructionPage = () => {
     const instructionContent = useSelector(state => state.instructionContent);
     const instructionTitle = useSelector(state => state.instructionTitle);
 
-    const [circuitData, setCircuitData] = useState([['5V', 'GND', 'D5', 'D6', 'D7'], ['5V', 'GND', 'D1', 'D2'], ['D1', 'D2']]);
+    // const [circuitData, setCircuitData] = useState([['5V', 'GND', 'D5', 'D6', 'D7'], ['5V', 'GND', 'D1', 'D2'], ['D1', 'D2']]);
+    const circuitData = useSelector(state => state.schemetic);
 
     return (
         <div className='instruction-page-container' style={{ backgroundImage: 'url(notebookbg.png)', backgroundSize: 'cover' }}>

@@ -5,7 +5,7 @@ import { AddCircle28Regular } from '@fluentui/react-icons';
 import { handleImageUpload } from "./util/image_handling";
 import CanvasAnimation from "./ContextCircularPulse";
 import { useDispatch } from 'react-redux';
-import { changeInstructionContentAction, changeInstructionTitleAction } from './redux/actions.js';
+import { changeInstructionContentAction, changeInstructionTitleAction, changeSchemeticAction } from './redux/actions.js';
 
 const InputContextPage = () => {
     const dispatch = useDispatch();
@@ -24,6 +24,7 @@ const InputContextPage = () => {
             console.log('Response data:', response.data);
             dispatch(changeInstructionContentAction(response.data.message[0].instruction));
             dispatch(changeInstructionTitleAction(response.data.message[0].name));
+            dispatch(changeSchemeticAction(response.data.message[0].connections));
         } catch (error) {
             console.error('Error fetching data:', error);
         }
