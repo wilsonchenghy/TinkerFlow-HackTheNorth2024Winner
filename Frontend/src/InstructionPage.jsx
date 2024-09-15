@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import CircuitBoard from './CircuitComponent';
 import './css/InstructionPage.css';
-import { useSelector } from 'react-redux';
 
 const InstructionPage = () => {
     const instructionSteps = [
@@ -14,24 +13,22 @@ const InstructionPage = () => {
     ];
 
     // Initialize state with the array of instruction steps
-    // const [instructionContent, setInstructionContent] = useState(instructionSteps);
-
-    const instructionContent = useSelector(state => state.instructionContent);
+    const [instructionContent, setInstructionContent] = useState(instructionSteps);
 
     return (
-        <div className='instruction-page-container'>
+        <div className='instruction-page-container' style={{ backgroundImage: 'url(notebookbg.png)', backgroundSize: 'cover' }}>
             <div className='instruction-topic-container'>
-                <div className='instruction-topic'>Instruction Topic</div>
+                <div className='instruction-topic' style={{ fontFamily: 'Patrick Hand, cursive' }}>Instructions</div>
             </div>
-            <div className='schematic-container'>
+            <div className='schematic-container' style={{ backgroundColor: 'white' }}>
                 <CircuitBoard data={[['5V', 'GND', 'D5', 'D6', 'D7'], ['5V', 'GND', 'D1', 'D2'], ['D1', 'D2']]} />
             </div>
             <div className='instruction-content-container'>
-                <ul>
+                <div>
                     {instructionContent.map((step, index) => (
-                        <li key={index}>{step}</li>
+                        <div key={index} style={{ marginBottom: '20px', fontFamily: 'Patrick Hand, cursive', fontWeight: 'bold', fontSize: '18px' }}>{step}</div>
                     ))}
-                </ul>
+                </div>
             </div>
         </div>
     );
