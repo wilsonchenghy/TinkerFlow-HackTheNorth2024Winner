@@ -9,9 +9,8 @@ from langchain_core.messages import HumanMessage
 
 def get_query(objects_using):
     return '''
-    Given only the following materials: ''' + ', '.join(objects_using) + '''.
+    Given ONLY the following materials: ''' + ', '.join(objects_using) + '''.
     Return a JSON object of the best project to work on with the name, description, instruction, connection, and components. 
-    
     '''
 
 def get_project_info(objects_using, api_key = "A3AdtI1axIksKhMN6IG2PpyOharzuF4RV2a6NHgt" ):
