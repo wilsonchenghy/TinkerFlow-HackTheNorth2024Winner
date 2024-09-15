@@ -67,3 +67,26 @@
     cursor: pointer;
     border-radius: 10px;
 }
+
+.delete-icon {
+    position: relative;
+    top: -6px;
+    left: -4px;
+    width: 30px;
+    height: 30px;
+    border: none; /* Remove default border */
+    background: transparent; /* Transparent background by default */
+    cursor: pointer; /* Change cursor to pointer to indicate it's clickable */
+    transition: opacity 0.1s; /* Smooth transition for hover effect */
+    opacity: 0; /* Start with button hidden */
+}
+
+.context-box-content:hover .delete-icon {
+    opacity: 1; /* Show button on hover */
+}
+
+.delete-icon .icon {
+    position: relative;
+    top: -3px;
+    left: -7.25px;
+}

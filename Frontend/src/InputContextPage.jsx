@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import './css/InputContextPage.css';
 import axios from 'axios';
+import { DismissCircle20Regular } from "@fluentui/react-icons";
 import { AddCircle28Regular, FastAcceleration24Regular, Star28Regular } from '@fluentui/react-icons';
 import CanvasAnimation from "./ContextCircularPulse";
 import { useDispatch } from 'react-redux';
@@ -112,6 +113,14 @@ const InputContextPage = () => {
                     left: `${randomLeft}px`, // Use calculated left position
                     }}
                 >
+                    <button style={{position: 'relative', top: -6, left: -4, borderWidth: 0}}  className="delete-icon" 
+                        onClick={() => {const filtered_array = contextBoxContent.filter((_, cur_index) => cur_index !== index); 
+                            setContextBoxContent(filtered_array);
+                            handleSubmit(filtered_array); 
+                       }}>
+                        <DismissCircle20Regular style={{position: 'relative', top: -3, left: -7.25}} />
+                        {/* <span className="icon"></span> Unicode for trash can */}
+                    </button>
                     {item}
                 </div>
                 );
