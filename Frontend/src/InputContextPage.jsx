@@ -93,10 +93,10 @@ const InputContextPage = () => {
                 const getRandomInRange = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
 
-                const minTop = 230;
-                const maxTop = 400;
-                const minLeft = 100;
-                const maxLeft = 400;
+                const minTop = 280;
+                const maxTop = 480;
+                const minLeft = 130;
+                const maxLeft = 370;
 
                 // Generate random values within the specified range
                 const randomTop = getRandomInRange(minTop, maxTop);
