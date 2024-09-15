@@ -125,9 +125,9 @@ def submit():
 
     response = get_project_info(objects_using)
 
-    print(response['instruction'])
+    # print(response['instruction'])
 
-    # print(response['connections'])
+    print(response['connections'])
     # print(response['components'], '\n\n\n\n')
 
 
@@ -137,7 +137,7 @@ def submit():
 
 
     print(f'Received prompt: {prompt}')
-    return jsonify({'message': [response['instruction']]}), 200 
+    return jsonify({'message': [response]}), 200 
 
 if __name__ == '__main__':
     app.run(port=5001, debug=True)
