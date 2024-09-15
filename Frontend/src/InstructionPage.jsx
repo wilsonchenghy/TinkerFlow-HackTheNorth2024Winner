@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import CircuitBoard from './CircuitComponent';
 import './css/InstructionPage.css';
+import { useSelector } from 'react-redux';
 
 const InstructionPage = () => {
     const instructionSteps = [
@@ -12,8 +13,9 @@ const InstructionPage = () => {
         '6. Power the setup: Connect the 9V Battery to the Arduino Nano\'s VIN pin and ground.'
     ];
 
-    // Initialize state with the array of instruction steps
-    const [instructionContent, setInstructionContent] = useState(instructionSteps);
+    // const [instructionContent, setInstructionContent] = useState(instructionSteps);
+
+    const instructionContent = useSelector(state => state.instructionContent);
 
     return (
         <div className='instruction-page-container' style={{ backgroundImage: 'url(notebookbg.png)', backgroundSize: 'cover' }}>
@@ -26,7 +28,7 @@ const InstructionPage = () => {
             <div className='instruction-content-container'>
                 <div>
                     {instructionContent.map((step, index) => (
-                        <div key={index} style={{ marginBottom: '20px', fontFamily: 'Patrick Hand, cursive', fontWeight: 'bold', fontSize: '18px' }}>{step}</div>
+                        <div key={index} style={{ marginBottom: '20px', fontFamily: 'Patrick Hand', fontWeight: 'bold', fontSize: '18px' }}>{step}</div>
                     ))}
                 </div>
             </div>
