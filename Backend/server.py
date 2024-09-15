@@ -33,8 +33,8 @@ CORS(app)
 
 
 
-from query_cohere_main import get_project_info
-
+from query_cohere_main import get_project_info_cohere
+from groq_cohere_main import get_project_info_groq
 
 
 
@@ -42,35 +42,58 @@ from query_cohere_main import get_project_info
 def submit():
     data = request.get_json()
     contextBoxInput = data.get('contextBoxContent', '')
+    useGroq = data.get('useGroq', '')
 
+    print(useGroq)
 
-
-
-
-    
-    # objects_using = ["Arduino Nano", "L298N Motor Driver", "DC Motor", "DC Motor", "9V Battery"]
-    sucess_complete = False
-    while not sucess_complete:
-        try:
-            response = get_project_info(contextBoxInput)
+    if useGroq:
+        print("Using Groq")
+        sucess_complete = False
+        while not sucess_complete:
+            # try:
+            response = get_project_info_groq(contextBoxInput)
             sucess_complete = True
-        except Exception as error:
-            print(error)
+            # except Exception as error:
+            #     print(error)
 
 
-    # print(response['instruction'])
+        # print(response['instruction'])
 
-    print(response['connections'])
-    # print(response['components'], '\n\n\n\n')
-
-
-    # print(response['code'])
+        print(response['connections'])
+        # print(response['components'], '\n\n\n\n')
 
 
+        # print(response['code'])
 
 
-    print(f'Received prompt: {contextBoxInput}')
-    return jsonify({'message': [response]}), 200 
+
+
+        print(f'Received prompt: {contextBoxInput}')
+        return jsonify({'message': [response]}), 200 
+    else:    
+        # objects_using = ["Arduino Nano", "L298N Motor Driver", "DC Motor", "DC Motor", "9V Battery"]
+        sucess_complete = False
+        while not sucess_complete:
+            try:
+                response = get_project_info_cohere(contextBoxInput)
+                sucess_complete = True
+            except Exception as error:
+                print(error)
+
+
+        # print(response['instruction'])
+
+        print(response['connections'])
+        # print(response['components'], '\n\n\n\n')
+
+
+        # print(response['code'])
+
+
+
+
+        print(f'Received prompt: {contextBoxInput}')
+        return jsonify({'message': [response]}), 200 
 
 
 

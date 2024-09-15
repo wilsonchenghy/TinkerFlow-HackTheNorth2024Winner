@@ -13,7 +13,7 @@ def get_query(objects_using):
     Return a JSON object of the best project to work on with the name, description, instruction, connection, and components. 
     '''
 
-def get_project_info(objects_using, api_key = "A3AdtI1axIksKhMN6IG2PpyOharzuF4RV2a6NHgt" ):
+def get_project_info_groq(objects_using, api_key = "A3AdtI1axIksKhMN6IG2PpyOharzuF4RV2a6NHgt" ):
     '''get_project_info(objects_using, api_key) -> JSON
     returns  the name descripition and instruction of the project.
     '''
@@ -126,15 +126,15 @@ def get_project_info(objects_using, api_key = "A3AdtI1axIksKhMN6IG2PpyOharzuF4RV
     # print(resp["instruction"])
 
 
-# objects_using = ["Arduino Nano", "L298N Motor Driver", "DC Motor", "DC Motor", "9V Battery"]
+objects_using = ["Arduino Nano", "L298N Motor Driver", "DC Motor", "DC Motor", "9V Battery"]
 
 
-# response = get_project_info(objects_using)
+response = get_project_info_groq(objects_using)
 
-# print(response['instruction'])
+print(response['instruction'])
 
-# print(response['connections'])
-# print(response['components'], '\n\n\n\n')
+print(response['connections'])
+print(response['components'], '\n\n\n\n')
 
 
-# print(response['code'])
+print(response['code'])

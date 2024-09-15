@@ -48,7 +48,7 @@ const InstructionPage = () => {
                     <div className='instruction-content-container'>
                         <div>
                             {instructionContent.map((step, index) => (
-                                <div key={index} style={{ marginBottom: '20px', fontFamily: 'Patrick Hand', fontWeight: 'bold', fontSize: '18px' }}>
+                                <div key={index}>
                                     {step}
                                 </div>
                             ))}

@@ -1,3 +1,5 @@
+@import url(https://fonts.google.com/share?selection.family=Dancing+Script:wght@400..700);
+  
 .instruction-page-container {
     width: 62vw;
     height: 100vh;
@@ -19,7 +21,7 @@
     margin-bottom: 20px;
     margin-top: 40px;
     text-align: center;
-    font-family: "Handlee", cursive;
+    font-family: 'Dancing Script', cursive;
 }
 
 .schematic-container {
@@ -30,6 +32,7 @@
     margin-top: 20px;
     padding-left: 30px;
     padding-right: 30px;
-    font-family: "Handlee", cursive;
-    font-weight: bold;
+    font-family: 'Dancing Script', cursive !important;
+    font-weight: 800;
+    font-size: 20px;
 }

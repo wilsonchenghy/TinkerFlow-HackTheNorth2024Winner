@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import './css/InputContextPage.css';
 import axios from 'axios';
-import { AddCircle28Regular } from '@fluentui/react-icons';
+import { AddCircle28Regular, FastAcceleration24Regular, Star28Regular } from '@fluentui/react-icons';
 import CanvasAnimation from "./ContextCircularPulse";
 import { useDispatch } from 'react-redux';
 import { changeInstructionContentAction, changeInstructionTitleAction, changeSchemeticAction, changeComponentNamesAction, changeIsLoadingAction } from './redux/actions.js';
@@ -27,7 +27,7 @@ const InputContextPage = () => {
     const handleSubmit = async (updatedContent) => {
         dispatch(changeIsLoadingAction(true));
         try {
-            const response = await axios.post('http://localhost:5001/submit', { contextBoxContent: updatedContent });
+            const response = await axios.post('http://localhost:5001/submit', { contextBoxContent: updatedContent, useGroq: useGroq });
             console.log('Data sent successfully');
             console.log('Response data:', response.data);
             dispatch(changeInstructionContentAction(response.data.message[0].instruction));
@@ -73,6 +73,11 @@ const InputContextPage = () => {
         input.click();
     };
 
+    const [useGroq, setUseGroq] = useState(false);
+    const toggleGroq = () => {
+        setUseGroq(!useGroq);
+    }
+
     return (
         <div className="input-context-page-container">
             <div className="input-context-topic">Enter the components you got! </div>
@@ -112,6 +117,9 @@ const InputContextPage = () => {
                 );
             })}
             <div className="input-bar">
+                <button className="import-button" onClick={() => toggleGroq()}>
+                    {useGroq ? (<FastAcceleration24Regular/>) : (<Star28Regular/>)}
+                </button>
                 <button className="import-button" onClick={() => handleImageUpload()}>
                     <AddCircle28Regular/>
                 </button>
