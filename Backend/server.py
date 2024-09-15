@@ -112,7 +112,7 @@ def get_project_info(objects_using, api_key = "A3AdtI1axIksKhMN6IG2PpyOharzuF4RV
     # print(resp["instruction"])
 
 
-    
+
 
 @app.route('/submit', methods=['POST'])
 def submit():

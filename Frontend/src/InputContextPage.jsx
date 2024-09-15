@@ -4,10 +4,13 @@ import axios from 'axios';
 import { AddCircle28Regular } from '@fluentui/react-icons';
 import { handleImageUpload } from "./util/image_handling";
 import CanvasAnimation from "./ContextCircularPulse";
+import { useDispatch } from 'react-redux';
+import { changeInstructionContentAction } from './redux/actions.js';
 
 const InputContextPage = () => {
+    const dispatch = useDispatch();
+
     const [prompt, setPrompt] = useState('');
-    const [response, setResponse] = useState('');
 
     const [file, setFile] = useState(); 
     const [photo, setPhoto] = useState(); 
@@ -22,7 +25,7 @@ const InputContextPage = () => {
             const response = await axios.post('http://localhost:5001/submit', { prompt });
             console.log('Data sent successfully');
             console.log('Response data:', response.data);
-            // setResponse(response.data.choices[0].text);
+            dispatch(changeInstructionContentAction(response.data.message[0]));
         } catch (error) {
             console.error('Error fetching data:', error);
         }
@@ -82,7 +85,6 @@ const InputContextPage = () => {
                     />
                     <button type="submit" className="button">Send</button>
                 </form>
-                {response && <div className="response">{response}</div>}
             </div>
         </div>
     );

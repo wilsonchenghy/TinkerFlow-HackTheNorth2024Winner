@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import CircuitBoard from './CircuitComponent';
 import './css/InstructionPage.css';
+import { useSelector } from 'react-redux';
 
 const InstructionPage = () => {
     const instructionSteps = [
@@ -13,7 +14,9 @@ const InstructionPage = () => {
     ];
 
     // Initialize state with the array of instruction steps
-    const [instructionContent, setInstructionContent] = useState(instructionSteps);
+    // const [instructionContent, setInstructionContent] = useState(instructionSteps);
+
+    const instructionContent = useSelector(state => state.instructionContent);
 
     return (
         <div className='instruction-page-container'>
