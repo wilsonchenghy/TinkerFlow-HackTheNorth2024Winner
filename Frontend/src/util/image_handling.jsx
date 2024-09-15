@@ -1,49 +1,39 @@
+import axios from "axios";
+
 export const setSelectedImage = (e, setFile) => {
     setFile(e.target.files[0]);
 }
 
-export const handleImageUpload = async (setFile, setPhoto) => {
+export const handleImageUpload = async () => {
+    console.log("hello"); 
+    var file = null;
     var input = document.createElement('input');
     input.type = 'file';
 
-    input.onchange = e => { 
-   var file = e.target.files[0]; 
+    input.onchange = async (e) => { 
+        file = e.target.files[0]; 
+        console.log("ddd");
+        console.log("File ", file); 
+        //identifyImage(file); 
+        //sendMultiModalPromptWithImage(URL.createObjectURL(file));
+        var reader = new FileReader(); 
+        reader.addEventListener("load", async () => {
+          const data_url = reader.result;
+          console.log(data_url);
+          try {
+            const response = await axios.post("http://localhost:5001/test", {'image_url': data_url});
+            console.log('File uploaded successfully');
+            console.log('Response data:', response.data);
+            //identifyImage(file, imageUrl); 
+          } catch (error) {
+            console.error('Error uploading file:', error);
+        }
+        })
+        reader.readAsDataURL(file); 
+        //console.log(data_url);
     }
 
     input.click();
-if (file) {
-  const imageUrl = URL.createObjectURL(file);
-  setFile(file);
-  //setImageUrl(imageUrl);
-  setPhoto(imageUrl); 
-  try {
-    const response = await axios.post("http://localhost:5001/photo", imageUrl);
-    console.log('File uploaded successfully');
-    console.log('Response data:', response.data);
-    setPhoto(imageUrl); // Update photo state with URL or path received from the server
-} catch (error) {
-    console.error('Error uploading file:', error);
-}
-}
-};
-
-const onFileUpload = async () => {
-  
-    // const formData = new FormData();
-    // formData.append('myFile', file);
-
-    try {
-        const response = await axios.post("http://localhost:5001/photo", formData, {
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            }
-        });
-        console.log('File uploaded successfully');
-        console.log('Response data:', response.data);
-        setPhoto(response.data.fileUrl); // Update photo state with URL or path received from the server
-    } catch (error) {
-        console.error('Error uploading file:', error);
-    }
 };
 
 export const fileData = (photo, file) => {

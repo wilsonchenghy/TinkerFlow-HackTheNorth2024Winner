@@ -12,9 +12,6 @@ const InputContextPage = () => {
 
     const [prompt, setPrompt] = useState('');
 
-    const [file, setFile] = useState(); 
-    const [photo, setPhoto] = useState(); 
-
     const handlePromptChange = (e) => {
         setPrompt(e.target.value);
     };
@@ -73,7 +70,7 @@ const InputContextPage = () => {
                 );
             })}
             <div className="input-bar">
-                <button className="import-button" onClick={() => handleImageUpload(setFile, setPhoto)}>
+                <button className="import-button" onClick={() => handleImageUpload()}>
                     <AddCircle28Regular/>
                 </button>
                 <form onSubmit={handleSubmit}>
