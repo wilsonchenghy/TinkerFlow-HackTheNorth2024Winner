@@ -12,3 +12,8 @@ export const changeSchemeticAction = (schemetic) => ({
     type: 'CHANGE_SCHEMETIC',
     payload: schemetic,
 });
+
+export const changeComponentNamesAction = (componentNames) => ({
+    type: 'CHANGE_COMPONENT_NAMES',
+    payload: componentNames,
+});

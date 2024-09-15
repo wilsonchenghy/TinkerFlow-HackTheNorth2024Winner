@@ -21,13 +21,16 @@ const InstructionPage = () => {
     // const [circuitData, setCircuitData] = useState([['5V', 'GND', 'D5', 'D6', 'D7'], ['5V', 'GND', 'D1', 'D2'], ['D1', 'D2']]);
     const circuitData = useSelector(state => state.schemetic);
 
+    // const componentNames = ['C1', 'C2', 'C3'];
+    const componentNames = useSelector(state => state.componentNames);
+
     return (
         <div className='instruction-page-container' style={{ backgroundImage: 'url(notebookbg.png)', backgroundSize: 'cover' }}>
             <div className='instruction-topic-container'>
                 <div className='instruction-topic' style={{ fontFamily: 'Patrick Hand, cursive' }}>{instructionTitle}</div>
             </div>
             <div className='schematic-container' style={{ backgroundColor: 'white' }}>
-                <CircuitBoard data={circuitData} />
+                <CircuitBoard data={circuitData} componentNames={componentNames}/>
             </div>
             <div className='instruction-content-container'>
                 <div>

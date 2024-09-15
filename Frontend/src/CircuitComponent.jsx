@@ -4,8 +4,8 @@ import './css/CircuitComponent.css';
 import '@xyflow/react/dist/style.css';
 
 // Function to create initial nodes for each component block
-const initialNodes = (data, blockIndex, offsetX) => [
-  { id: `comp-${blockIndex}-1`, position: { x: offsetX, y: 100 }, data: { label: `Component ${blockIndex + 1}` }, className: 'custom-node', style: { height: `${(data.length * 100) / 2}px` } },
+const initialNodes = (data, blockIndex, offsetX, componentNames) => [
+  { id: `comp-${blockIndex}-1`, position: { x: offsetX, y: 100 }, data: { label: componentNames[blockIndex] }, className: 'custom-node', style: { height: `${(data.length * 100) / 2}px` } },
   ...data.map((item, index) => ({
     id: `comp-${blockIndex}-${item}`, // Unique ID for each item in the block
     position: { x: offsetX + 195, y: 100 + index * 50 },
@@ -44,7 +44,7 @@ const connectMatchingNodes = (dataBlocks) => {
   return commonEdges;
 };
 
-export default function CircuitBoard({ data }) {
+export default function CircuitBoard({ data,  componentNames }) {
   const dataBlocks = data; // Expecting data in the form of data = {[], []}
 
   const nodes = [];
@@ -53,7 +53,7 @@ export default function CircuitBoard({ data }) {
   // Loop over each data block and generate nodes and edges
   dataBlocks.forEach((blockData, index) => {
     const offsetX = index * 350; // Separate each component block visually by 400px
-    nodes.push(...initialNodes(blockData, index, offsetX));
+    nodes.push(...initialNodes(blockData, index, offsetX, componentNames));
     edges.push(...initialEdges(blockData, index));
   });
 
