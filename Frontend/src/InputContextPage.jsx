@@ -95,8 +95,8 @@ const InputContextPage = () => {
 
                 const minTop = 280;
                 const maxTop = 480;
-                const minLeft = 130;
-                const maxLeft = 370;
+                const minLeft = 150;
+                const maxLeft = 350;
 
                 // Generate random values within the specified range
                 const randomTop = getRandomInRange(minTop, maxTop);
