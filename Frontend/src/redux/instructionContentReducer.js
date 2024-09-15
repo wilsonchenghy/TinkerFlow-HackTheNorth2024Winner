@@ -1,4 +1,4 @@
-const initialState = [];
+const initialState = ['Build with what you had in hand in just one click away'];
 
 const instructionContentReducer = (state = initialState, action) => {
     switch(action.type) {
