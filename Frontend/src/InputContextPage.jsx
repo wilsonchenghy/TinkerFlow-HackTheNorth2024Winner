@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import './css/InputContextPage.css';
 import axios from 'axios';
 import { AddCircle28Regular } from '@fluentui/react-icons';
-import { handleImageUpload } from "./util/image_handling";
 import CanvasAnimation from "./ContextCircularPulse";
 import { useDispatch } from 'react-redux';
 import { changeInstructionContentAction, changeInstructionTitleAction, changeSchemeticAction, changeComponentNamesAction, changeIsLoadingAction } from './redux/actions.js';
@@ -19,12 +18,10 @@ const InputContextPage = () => {
 
     const addContextBoxContent = (e) => {
         e.preventDefault();
-        setContextBoxContent(prevContent => {
-            const updatedContent = [...prevContent, prompt];
-            handleSubmit(updatedContent);
-            return updatedContent;
-        });
+        setContextBoxContent(prevContent => [...prevContent, prompt]);
         setPrompt('');
+        const updatedContent = [...contextBoxContent, prompt];
+        handleSubmit(updatedContent);
     }
 
     const handleSubmit = async (updatedContent) => {
@@ -45,9 +42,36 @@ const InputContextPage = () => {
 
     const [contextBoxContent, setContextBoxContent] = useState(['Arduino', 'L298N', 'hi'])
 
-    // useEffect(() => {
-    //     handleSubmit();
-    // }, [contextBoxContent]);
+    const handleImageUpload = async () => {
+        var file = null;
+        var input = document.createElement('input');
+        input.type = 'file';
+    
+        input.onchange = async (e) => { 
+            file = e.target.files[0]; 
+            console.log("ddd");
+            console.log("File ", file); 
+            var reader = new FileReader(); 
+            reader.addEventListener("load", async () => {
+              const data_url = reader.result;
+              console.log(data_url);
+              try {
+                const response = await axios.post("http://localhost:5001/test", {'image_url': data_url});
+                console.log('File uploaded successfully');
+                console.log('Response data:', response.data);
+                setContextBoxContent(prevContent => [...prevContent, response.data.hardware]);
+                const latestContent = [...contextBoxContent, response.data.hardware];
+                handleSubmit(latestContent);
+              } catch (error) {
+                console.error('Error uploading file:', error);
+            }
+            })
+            reader.readAsDataURL(file); 
+            //console.log(data_url);
+        }
+    
+        input.click();
+    };
 
     return (
         <div className="input-context-page-container">
