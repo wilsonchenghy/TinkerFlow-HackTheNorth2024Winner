@@ -126,15 +126,15 @@ def get_project_info_groq(objects_using, api_key = "A3AdtI1axIksKhMN6IG2PpyOharz
     # print(resp["instruction"])
 
 
-objects_using = ["Arduino Nano", "L298N Motor Driver", "DC Motor", "DC Motor", "9V Battery"]
+# objects_using = ["Arduino Nano", "L298N Motor Driver", "DC Motor", "DC Motor", "9V Battery"]
 
 
-response = get_project_info_groq(objects_using)
+# response = get_project_info_groq(objects_using)
 
-print(response['instruction'])
+# print(response['instruction'])
 
-print(response['connections'])
-print(response['components'], '\n\n\n\n')
+# print(response['connections'])
+# print(response['components'], '\n\n\n\n')
 
 
-print(response['code'])
+# print(response['code'])

@@ -40,7 +40,7 @@ const InstructionPage = () => {
             ) : (
                 <>
                     <div className='instruction-topic-container'>
-                        <div className='instruction-topic' style={{ fontFamily: 'Patrick Hand, cursive' }}>{instructionTitle}</div>
+                        <div className='instruction-topic'>{instructionTitle}</div>
                     </div>
                     <div className='schematic-container' style={{ backgroundColor: 'white' }}>
                         <CircuitBoard data={circuitData} componentNames={componentNames} />

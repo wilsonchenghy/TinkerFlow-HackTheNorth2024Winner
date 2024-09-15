@@ -40,7 +40,7 @@ const InputContextPage = () => {
         }
     };
 
-    const [contextBoxContent, setContextBoxContent] = useState(['Arduino', 'L298N', 'hi'])
+    const [contextBoxContent, setContextBoxContent] = useState(['Motor', 'L298N'])
 
     const handleImageUpload = async () => {
         var file = null;

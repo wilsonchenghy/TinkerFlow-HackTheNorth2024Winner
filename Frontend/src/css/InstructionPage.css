@@ -1,4 +1,4 @@
-@import url(https://fonts.google.com/share?selection.family=Dancing+Script:wght@400..700);
+@import url(https://fonts.google.com/share?selection.family=Dancing+Script:wght@400..700|Playpen+Sans:wght@100..800);
   
 .instruction-page-container {
     width: 62vw;
@@ -16,12 +16,12 @@
 }
 
 .instruction-topic {
-    font-size: 28px;
-    font-weight: bold;
+    font-size: 32px;
     margin-bottom: 20px;
     margin-top: 40px;
     text-align: center;
-    font-family: 'Dancing Script', cursive;
+    font-family: "Handlee", cursive;
+    font-weight: 1000;
 }
 
 .schematic-container {
@@ -32,7 +32,7 @@
     margin-top: 20px;
     padding-left: 30px;
     padding-right: 30px;
-    font-family: 'Dancing Script', cursive !important;
+    font-family: "Handlee", cursive;
     font-weight: 800;
-    font-size: 20px;
+    font-size: 27px;
 }
