@@ -25,7 +25,7 @@ const InputContextPage = () => {
             const response = await axios.post('http://localhost:5001/submit', { prompt });
             console.log('Data sent successfully');
             console.log('Response data:', response.data);
-            dispatch(changeInstructionContentAction(response.data.message[0]));
+            dispatch(changeInstructionContentAction(response.data.message[0].instruction));
         } catch (error) {
             console.error('Error fetching data:', error);
         }
