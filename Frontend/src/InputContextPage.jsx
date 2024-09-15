@@ -5,7 +5,7 @@ import { AddCircle28Regular } from '@fluentui/react-icons';
 import { handleImageUpload } from "./util/image_handling";
 import CanvasAnimation from "./ContextCircularPulse";
 import { useDispatch } from 'react-redux';
-import { changeInstructionContentAction } from './redux/actions.js';
+import { changeInstructionContentAction, changeInstructionTitleAction } from './redux/actions.js';
 
 const InputContextPage = () => {
     const dispatch = useDispatch();
@@ -26,6 +26,7 @@ const InputContextPage = () => {
             console.log('Data sent successfully');
             console.log('Response data:', response.data);
             dispatch(changeInstructionContentAction(response.data.message[0].instruction));
+            dispatch(changeInstructionTitleAction(response.data.message[0].name));
         } catch (error) {
             console.error('Error fetching data:', error);
         }
@@ -83,7 +84,7 @@ const InputContextPage = () => {
                         placeholder="Type your message"
                         className="input"
                     />
-                    <button type="submit" className="button">Send</button>
+                    <button type="submit" className="button">Add</button>
                 </form>
             </div>
         </div>
